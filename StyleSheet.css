@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+
+body{
+    background: #ddeeff;
+}
+p, h1, h2, h3, a{
+    font-family: Lato, verdana, sans-serif;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-weight: normal;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+} 
+
+.center{
+    text-align:center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*TABLE STYLE*/
+table {
+    overflow: hidden;
+}
+.header-row {
+    padding: 4px;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #bbddff;
+}
+
+#queue {
+    vertical-align: middle;
+    margin-bottom: 20px;
+    max-width: 40%;
+    float: left;
+
+}
+
+.queue-table {
+    max-height : 90%;
+}
+
+.queue-table td {
+    width : 100%;
+}
+/* provide some minimal visual accomodation for IE8 and below */
+.queue-table tr{
+    background: #b8d1f3;
+}
+/*  Define the background color for all the ODD background rows  */
+.queue-table tr:nth-child(odd){ 
+	background: #bbddff;
+}
+/*  Define the background color for all the EVEN background rows  */
+.queue-table tr:nth-child(even){
+	background: #ddeeff;
+}
+
+td {
+    height: 50px;
+    vertical-align: bottom;
+    
+  }
+td {
+    padding: 15px;
+    text-align: left;
+  }
+
+/********************************/
+#submit-new {
+    max-width: 400px;
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+    margin: auto;
+}
+/*Form Style*/
+input , textarea{
+    font-size: 15px; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    width: 90%;
+    margin-left: auto;
+    margin: auto;
+}
+
+label { 
+    display: block; 
+    font-size: 15px; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+/**********************************/
+#title {
+    display: flex;
+}
+#login-link {
+    margin-right : 10px;
+}
+/*Nav-Bar Style*/
+#nav-bar-div{
+    background-color: white;
+    padding: 5px;
+    margin:10px;
+}
+.nav-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+ }
+ .nav-bar.active {
+    background-color: #4CAF50;
+    color: white;
+ }
+ .nav-bar li {
+    border-bottom: 1px solid #555;
+    display: inline;
+ }
+ .nav-bar a{
+     color: black;
+ }
+ #logo-header img{
+     
+     max-width: 10%;
+ }
+ .logo-header{
+    color:green;
+     display: inline-block;
+     vertical-align: middle;
+     
+ }
+/******************************/
+.bold{
+    font-weight: bold;
+}
+.column {
+    float: left;
+    width: 45%;
+  }
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.test {
+    color: red;
+    font-family: 'Roboto', sans-serif;
+}
+.profile{
+    border: 1px solid black;
+    background: white;
+   
+}
+.input-form{
+    
+    border: 1px solid black;
+    background: white;
+    margin:5px;
+    padding: 1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+
+.help-window {
+    background: #eef4ff;
+    max-width: 40%;
+    border-radius: 5px;
+    margin-right: 10px;
+    display:inline;
+    padding: 10px;
+    float: right;
+}
+
+.myButton {
+	box-shadow: 2px 2px 4px 0px #9fb4f2;
+	background-color:#9ecc46;
+	border-radius:20px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:15px;
+	padding:11px 48px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background-color:#7ba135;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.myFormInput {
+    background-color:#FFFFFF;
+    border:solid 1px #A9A9A9;
+    margin: 5px;
+    font-size:16px;
+    color:#000000;
+    font-weight:bold;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-right:25px;
+    padding-left:25px;
+    -moz-border-radius:0px;
+    -webkit-border-radius:0px;
+    border-radius:10px;
+ }
+
+ #tagline {
+        font-size: 0.8em;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+
+ }
+
+ #sectionList {
+
+     margin:10px;
+ }
+
+ /* FOR MOBILE */
+ @media only screen and (max-width: 600px) {
+    #queue {
+        vertical-align: middle;
+        margin-bottom: 20px;
+        max-width: 100%;
+    
+    }
+    .help-window {
+        background: #eef4ff;
+        max-width: 100%;
+        margin-left:auto;
+        margin-right:auto;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    #tagline {
+        position: relative;
+    }
+
+ }
