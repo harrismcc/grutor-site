@@ -1,6 +1,18 @@
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135754439-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-135754439-3');
+    </script>
     <link href="/StyleSheet.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+
     <?php
         session_start();
         if (!$_SESSION["admin"]){
@@ -21,10 +33,17 @@
                 var arrayLength = returnedData.length;
 
                 for (var i = 0; i < arrayLength; i++) {
-                    //Do something
-                    console.log(returnedData[i]);
-                    goLink = "<a class='myButton' href='/gotolink.php?link=" + returnedData[i].link +"&id=" + returnedData[i].id + "' target='_blank'>Go</a>";
-                    completeLink = $complete = "<a class='myButton' href='/complete.php?id=" + returnedData[i].id + "' id='complete-"+ returnedData[i].id +"'>Complete</a> ";
+
+                    //handle potential lack of "http://"
+                    if (returnedData[i].link.indexOf("http://") == -1 && returnedData[i].link.indexOf("https://") == -1){
+                        link = "http://" + returnedData[i].link
+                    } else{
+                        link = returnedData[i].link
+                    }
+                    
+                    goLink = "<a class='myButton goButton' href='" + link +"' request-id='" + returnedData[i].id + "' target='_blank'>Go</a>";
+                    completeLink  = "<a class='myButton completeButton' request-id='"+ returnedData[i].id +"'>Complete</a> ";
+                    
                     if (returnedData[i].section == Number($("#sectionList").val())){
                         if (returnedData[i].in_progress == "1"){
                             $("#queue-table tbody").append('<tr><td><p>'+ returnedData[i].name +'</p></td><td>'+ chatboxDotted + '</td><td>'+ goLink + '</td><td>'+ completeLink +'</td></tr>');
@@ -33,6 +52,22 @@
                         }  
                     }
                 }
+
+                //Complete button listner
+                $(".completeButton").click(function(){
+                    event.preventDefault();
+                    $.get("/complete.php", {id : $(this).attr("request-id")}, function (data){
+                        refresh();
+                    })
+                })
+
+                //goto button listner
+                $(".goButton").click(function(){
+                    //event.preventDefault();
+                    $.get("/gotolink.php", {id : $(this).attr("request-id")}, function (data){
+                        refresh()
+                    })
+                })
 
                 
             })
@@ -63,6 +98,8 @@
             $("#sectionList").change(function(){
                 refresh();
             })
+
+            
         })
 
         

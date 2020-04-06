@@ -36,11 +36,13 @@ table {
     margin-bottom: 20px;
     max-width: 40%;
     float: left;
+    
 
 }
 
 .queue-table {
     max-height : 90%;
+    margin-bottom:10px;
 }
 
 .queue-table td {
