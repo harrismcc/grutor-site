@@ -44,11 +44,15 @@
                     goLink = "<a class='myButton goButton' href='" + link +"' request-id='" + returnedData[i].id + "' target='_blank'>Go</a>";
                     completeLink  = "<a class='myButton completeButton' request-id='"+ returnedData[i].id +"'>Complete</a> ";
                     
+                    email = returnedData[i].email;
+                    if (email == null){
+                        email = "None"
+                    }
                     if (returnedData[i].section == Number($("#sectionList").val())){
                         if (returnedData[i].in_progress == "1"){
-                            $("#queue-table tbody").append('<tr><td><p>'+ returnedData[i].name +'</p></td><td>'+ chatboxDotted + '</td><td>'+ goLink + '</td><td>'+ completeLink +'</td></tr>');
+                            $("#queue-table tbody").append('<tr><td><p>'+ returnedData[i].name +'</p></td><td><p>'+ email +'</p></td><td>'+ chatboxDotted + '</td><td>'+ goLink + '</td><td>'+ completeLink +'</td></tr>');
                         }else{
-                            $("#queue-table tbody").append('<tr><td><hp>'+ returnedData[i].name +'</p></td><td>'+ chatbox +'</td><td>'+ goLink +'</td><td>'+ completeLink +'</td></tr>');
+                            $("#queue-table tbody").append('<tr><td><p>'+ returnedData[i].name +'</p></td><td><p>'+ email +'</p></td><td>'+ chatbox +'</td><td>'+ goLink +'</td><td>'+ completeLink +'</td></tr>');
                         }  
                     }
                 }
@@ -96,6 +100,12 @@
 
             //refresh on changing of section selector
             $("#sectionList").change(function(){
+                section = Number($("#sectionList").val());
+                if (section == 1){
+                    $("#queueTitle").text("Pitzer CS5 Gold Queue")
+                } else if (section == 2){
+                    $("#queueTitle").text("Mudd CS5 Black Queue")
+                }
                 refresh();
             })
 
@@ -120,11 +130,12 @@
              </select>
 
 
-        <h2 class="header-row">Queue:</h2>
+        <h2 id="queueTitle" class="header-row">Pitzer CS5 Gold Queue</h2>
         <table id="queue-table" class="queue-table">
             <thead>
                 <tr>
                     <th><h3>Name</h3></th>
+                    <th><h3></h3></th>
                     <th><h3>In Progress</h3></th>
                     <th><h3>Go</h3></th>
                     <th><h3>Complete</h3></th>
