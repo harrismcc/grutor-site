@@ -135,7 +135,7 @@
             <thead>
                 <tr>
                     <th><h3>Name</h3></th>
-                    <th><h3></h3></th>
+                    <th><h3>Email</h3></th>
                     <th><h3>In Progress</h3></th>
                     <th><h3>Go</h3></th>
                     <th><h3>Complete</h3></th>

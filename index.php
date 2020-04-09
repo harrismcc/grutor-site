@@ -87,8 +87,18 @@
         })();
 
         
-
-
+        function setSectionDetails(section){
+            section = Number(section);
+            if (section == 1){
+                    $('#sectionList option[value=1]').attr('selected','selected');
+                    $("#queueTitle").text("Pitzer CS5 Gold Queue");
+                    $("#hours").html("Sunday, Monday, and Tuesday: 8-10pm PST");
+            } else if (section == 2){
+                    $('#sectionList option[value=2]').attr('selected','selected');
+                    $("#hours").html("<a href='https://docs.google.com/document/d/1qf-CaakB0EPNQc0a8GWiwGvCGhDqbBwUgLe8pon4H_A/edit' target='_blank'>View Hours</a>");
+                    $("#queueTitle").text("Mudd CS5 Black Queue");
+            }
+        };
 
         //things to do once elements are all loaded ( on submit form, on change course selector)
         $(document).ready(function () {
@@ -101,18 +111,11 @@
 
             }else {
                 //section cookie stored, load it and don't show modal
-                if (Cookies.get("selectedSectionId") == "1"){
-                    $('#sectionList option[value=1]').attr('selected','selected')
-                    $("#hours").html("Sunday, Monday, and Tuesday: 8-10pm PST")
-                    $("#queueTitle").text("Pitzer CS5 Gold Queue")
-                }else{
-                    $('#sectionList option[value=2]').attr('selected','selected')
-                    $("#hours").html("<a href='https://docs.google.com/document/d/1qf-CaakB0EPNQc0a8GWiwGvCGhDqbBwUgLe8pon4H_A/edit' target='_blank'>View Hours</a>")
-                    $("#queueTitle").text("Mudd CS5 Black Queue")
-                }   
+                setSectionDetails(Cookies.get("selectedSectionId"))
                 refresh();
                 
             }
+
 
 
             $("#submitButton").click(function(event){
@@ -135,13 +138,7 @@
                 Cookies.set("selectedSectionId",section);
 
 
-                if (section == 1){
-                    $("#queueTitle").text("Pitzer CS5 Gold Queue")
-                    $("#hours").html("Sunday, Monday, and Tuesday: 8-10pm PST")
-                } else if (section == 2){
-                    $("#hours").html("<a href='https://docs.google.com/document/d/1qf-CaakB0EPNQc0a8GWiwGvCGhDqbBwUgLe8pon4H_A/edit' target='_blank'>View Hours</a>")
-                    $("#queueTitle").text("Mudd CS5 Black Queue")
-                }
+                setSectionDetails(section);
                 
             })
 
@@ -152,7 +149,7 @@
 
                 if (Cookies.get("selectedSectionId") == undefined){
                     Cookies.set("selectedSectionId",Number($(this).attr("sectionId")));
-                    
+                    setSectionDetails(Cookies.get("selectedSectionId"));
                 }
                 refresh();
             })
