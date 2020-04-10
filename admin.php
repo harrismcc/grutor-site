@@ -82,7 +82,7 @@
         (function(){
         // do some stuff 
             refresh(); 
-        setTimeout(arguments.callee, 10000); //TODO: Get time working
+        setTimeout(arguments.callee, 5000); //TODO: Get time working
         })();
 
 
@@ -120,7 +120,11 @@
 <body>
     
     <div id="title">
-            <h1>Pitzer CS5 Video Grutoring</h1>
+            <h1>CS5 Video Grutoring - Grutor Portal</h1>
+    </div>
+    <div style="max-width:70%">
+        <p>Please connect to the student at the top of the queue by clicking Go.  Wait until the connection is established and then click Complete to remove the student from the queue.</p>
+    
     </div>
     <div id="queue">
 
